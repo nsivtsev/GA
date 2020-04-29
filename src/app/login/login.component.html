@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-8 mb-3">
+    <h3>Авторизация</h3>
+      <div class="form-group row">
+        <label for="inputLogin" class="col-sm-3 col-form-label">Имя пользователя</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="inputLogin" [(ngModel)]="login">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-3 col-form-label">Пароль</label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password" (keydown.enter)="Login()">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="Login()">Войти</button>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <samp>
+          Пользователи в БД:<br>
+          Логин: <strong>nsivtsev</strong><br>
+          Пароль: 123123<br>
+          <br>
+          Логин: <strong>test</strong><br>
+          Пароль: 123456<br>
+        </samp>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+

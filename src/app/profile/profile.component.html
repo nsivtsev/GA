@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="image-container">
+      <img *ngIf="!currentUser.photo" src="assets/images/default.png" class="card-img">
+      <img *ngIf="currentUser.photo" src="{{backendUrl}}/photo/{{currentUser.photo}}" class="card-img">
+    </div>
+    <div class="mt-3">
+      <div class="card">
+        <div class="card-body">
+          <small class="text-muted">Изменить фотографию профиля</small>
+          <div class="custom-file mb-2">
+            <label class="custom-file-label" for="customFilePhoto">{{filename}}</label>
+            <input type="file" class="custom-file-input" id="customFilePhoto" (change)="PhotoSelected($event)">
+          </div>
+          <button type="button" class="btn btn-primary" (click)="PhotoUpload()">Загрузить</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card my-3">
+      <div class="card-body">
+        <h5 class="card-title" *ngIf="!currentUser.cv">Загрузить резюме</h5>
+        <h5 class="card-title" *ngIf="currentUser.cv">Ваше резюме: <a
+          href="{{backendUrl}}/cv/{{currentUser.cv}}">скачать</a>
+        </h5>
+        <div class="custom-file mb-2">
+          <label class="custom-file-label" for="customFileCv">{{cvFilename}}</label>
+          <input type="file" class="custom-file-input" id="customFileCv" (change)="CvSelected($event)">
+        </div>
+        <button type="button" class="btn btn-primary" (click)="CvUpload()">Загрузить</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <h3>Личные данные</h3>
+
+
+    <div class="form-group">
+      <label for="inputSurname">Фамилия</label>
+      <input type="text" class="form-control" id="inputSurname" placeholder="Фамилия"
+             [(ngModel)]="currentUser.surname"
+             value="{{currentUser.surname}}">
+    </div>
+
+
+    <div class="form-group">
+      <label for="inputName">Имя</label>
+      <input type="text" class="form-control" id="inputName" placeholder="Имя"
+             [(ngModel)]="currentUser.name"
+             value="{{currentUser.name}}">
+    </div>
+
+
+    <div class="form-group">
+      <label for="inputPatronymic">Отчество</label>
+
+      <input type="text" class="form-control" id="inputPatronymic" placeholder="Отчество"
+             [(ngModel)]="currentUser.patronymic"
+             value="{{currentUser.patronymic}}">
+    </div>
+
+
+    <div class="form-group">
+      <label for="inputLogin">Логин</label>
+
+      <input type="text" class="form-control" id="inputLogin" placeholder="Логин" readonly
+             value="{{currentUser.login}}">
+
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail">E-mail</label>
+      <input type="email" class="form-control" id="inputEmail" placeholder="E-mail"
+             [(ngModel)]="currentUser.email"
+             value="{{currentUser.email}}">
+
+    </div>
+    <div class="form-group">
+      <label for="inputTel">Телефон</label>
+
+      <input type="tel" class="form-control" id="inputTel" placeholder="Номер телефона"
+             [(ngModel)]="currentUser.tel"
+             value="{{currentUser.tel}}">
+
+    </div>
+
+    <button class="btn btn-success mr-1" (click)="Save()">Сохранить</button>
+    <button class="btn btn-outline-secondary" (click)="Logout()">Выйти</button>
+
+
+  </div>
+
+
+</div>
+

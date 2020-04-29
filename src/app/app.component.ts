@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthService} from "./auth.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'GA';
+  constructor(private authService: AuthService) {
+  }
+
+  public get logIn(): boolean {
+    return (localStorage.getItem('auth_token') !== null);
+  }
 }
